@@ -1,0 +1,25 @@
+[project]
+name = "ai-foundations"
+version = "0.1.0"
+description = "Core math and ML building blocks implemented from scratch with NumPy: linear algebra, probability, TF-IDF similarity." 
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "pytest>=9.1.1",
+]
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/foundations"] # wheel distribution means that the package will be installed in site-packages, and site-packages is where Python looks for packages to import. If you import other packages in the future, you have to add them to this list. If you don't, Python won't be able to find them when you try to import them in your code, but the imports come from the same folder as the package, so they will be found. 
